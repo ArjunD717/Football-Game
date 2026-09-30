@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=CollisionMath
+comment1.params=
+comment1.target=CollisionMath()
+comment2.params=first\ second\ restitution
+comment2.target=boolean\ resolveCircleCollision(GameObject,\ GameObject,\ double)
+numComments=3
