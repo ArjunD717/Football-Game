@@ -37,22 +37,44 @@ src/test/java/footy/                Unit tests (physics, goals, vectors)
 
 ## Requirements
 
-- JDK 17 or newer (LTS recommended)
-- Maven 3.8+
-- JavaFX 21 (resolved automatically from Maven Central — no manual install)
+| Prerequisite | Windows | macOS | Linux (Ubuntu/Debian) |
+|---|---|---|---|
+| JDK 17+ (LTS recommended) | `winget install EclipseAdoptium.Temurin.17.JDK` | `brew install --cask temurin@17` | `sudo apt install -y temurin-17-jdk` (via Adoptium repo) or `sudo apt install -y openjdk-17-jdk` |
+| Maven 3.8+ | `winget install Apache.Maven` | `brew install maven` | `sudo apt install -y maven` |
+| JavaFX 21 | Resolved automatically from Maven Central — no manual install | Same — automatic | Same — automatic, but needs a display + GTK libs (see Linux note below) |
+
+> Verify with `java -version` and `mvn -version`. Java must report 17+.
+>
+> **Linux display + system libs:** JavaFX needs a running X11/Wayland session plus GTK 3. On Debian/Ubuntu:
+> `sudo apt install -y libgtk-3-0 libxtst6 libgl1-mesa-glx`.
+> Headless servers/WSL without a display will fail — run in a desktop session (or WSLg) with `$DISPLAY`/`$WAYLAND_DISPLAY` set.
 
 ## Run
+
+One command on every OS (run from the repo root):
 
 ```bash
 mvn javafx:run
 ```
 
-## Build
+Shell-specific notes:
 
-```bash
-mvn -q -DskipTests package      # produces target/football-duel-1.0.0.jar
-mvn test                        # run the unit test suite
-```
+- **Windows (Command Prompt):** `mvn javafx:run`
+- **Windows (PowerShell):** `mvn javafx:run` (same; use `.\` prefix only for local scripts, not needed here)
+- **macOS (Terminal / zsh):** `mvn javafx:run`
+- **Linux (bash):** `mvn javafx:run`
+
+> First launch downloads JavaFX 21 + dependencies from Maven Central, so it takes longer than subsequent runs.
+
+## Build and test
+
+| Task | Windows (CMD / PowerShell) | macOS / Linux (bash / zsh) |
+|---|---|---|
+| Run unit tests | `mvn test` | `mvn test` |
+| Build JAR | `mvn -q -DskipTests package` | `mvn -q -DskipTests package` |
+| Build + test | `mvn package` | `mvn package` |
+
+The build produces `target/football-duel-1.0.0.jar`.
 
 > The packaged JAR needs the JavaFX modules on the module path at runtime;
 > `mvn javafx:run` is the supported way to launch during development.
