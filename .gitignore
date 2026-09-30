@@ -1,0 +1,66 @@
+# Java / Maven build output
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+# Maven wrapper
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties.bak
+
+# BlueJ (legacy project metadata — not versioned)
+*.ctxt
+package.bluej
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Operating systems
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# Test / coverage output
+surefire-reports/
+failsafe-reports/
+*.exec
+jacoco.xml
+
+# Local environment overrides
+.env
+.env.local
